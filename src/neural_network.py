@@ -45,6 +45,10 @@ class NeuralNetwork(object):
         while not game.over:
             if win:
                 clock.tick(50)
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
             feedforward = self.getOutput(snake.getInputv2())
             movedirection = -1
             maximum = -1

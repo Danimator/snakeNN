@@ -72,7 +72,7 @@ def main():
 
 
     pygame.init()
-    win = pygame.display.set_mode((980, 480))
+    win = pygame.display.set_mode((720, 480))
     pygame.display.set_caption("Snake Neural Network - Regular")
     clock = pygame.time.Clock()
 
@@ -92,14 +92,14 @@ def main():
                     movedirection = 24
                 elif event.key == pygame.K_DOWN:
                     movedirection = 25
-            if game.board[util.positionOnceTowardsDirection(snake.cells[0], game, finalDirection)] == 2:
-                print("Snake's score is now {}, length {}".format(game.score+100, snake.length+3))
+        if game.board[util.positionOnceTowardsDirection(snake.cells[0], game, movedirection)] == 2:
+            print("Snake's score is now {}, length {}".format(game.score+100, snake.length+3))
         snake.move(movedirection)
 
         win.fill((0,0,0))
         game.display(win)
         pygame.display.update()
-    print("You ended with a score of {}".format(score))
+    print("You ended with a score of {}".format(game.score))
     pygame.quit()
     sys.exit()
 
